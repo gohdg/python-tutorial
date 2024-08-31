@@ -1,29 +1,24 @@
-# if = Do some code only IF some condtion is True
-#      Else do something else
+# Python calculator
 
-# age = int(input("Enter your age: "))
+operator = input("Enter an operator (+ - * /): ")
+num1 = float(input("Enter the 1st number: "))
+num2 = float(input("Enter the 2nd number: "))
 
-# if age >= 100:
-#     print("You are too old to sign up")
-# elif age >= 18:
-#     print("You are now signed up!")
-# elif age < 0:
-#     print("You haven't been born yet!")
-# else:
-#     print("You must be 18+ to sign up")
+result = None
 
-
-name = input("Enter your name: ")
-
-if name != "":
-    print(f"Hello {name}")
+if operator == "+":
+    result = num1 + num2
+elif operator == "-":
+    result = num1 - num2
+elif operator == "/":
+    if num2 != 0:
+        result = num1 / num2
+    else:
+        print("Error: Division by zero is not allowed")
+elif operator == "*":
+    result = num1 * num2
 else:
-    print("You did not type in your name!")
+    print(f"{operator} is not valid operator")
 
-
-# for_sale = False
-
-# if for_sale:
-#     print("This item is for sale")
-# else:
-#     print("This item is NOT for sale")
+if result is not None:
+    print(round(result, 3))
