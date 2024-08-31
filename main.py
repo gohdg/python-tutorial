@@ -1,43 +1,17 @@
-# for loops
-# 형식: for x in range(1,11):
-# 유용함수 range(start, end(exclusive),[step])
-# continue - skip, break - loop 탈출
+import time
 
+# my_time = int(input("Enter the time in seconds: "))
 
-# 1,2,3,4,5,6,~10
-# for x in range(1, 11):
-#     print(x)
+my_time = 3671  # 예: 3671초는 1시간 1분 11초
 
-# 10,9,8,7,.. 1
-# for x in reversed(range(1, 11)):
-#     print(x)
+for x in range(my_time, 0, -1):
+    seconds = x % 60  # 초 단위는 60으로 나눈 나머지
+    minutes = (x // 60) % 60  # 분 단위는 초 단위를 제외한 나머지에서 60으로 나눈 나머지
+    hours = x // 3600  # 시간 단위는 전체 시간을 3600으로 나눈 몫
+    print(f"{hours:02}:{minutes:02}:{seconds:02}")
+    time.sleep(1)
 
-# print("HAPPY NEW YEAR!")
+print("TIME'S UP")
 
-# 1,3,5,... 9
-# for x in range(1, 11, 2):
-#     print(x)
-
-# List
-# items = [1, 2, 33, 56, 78]
-# for item in items:
-#     print(item)
-
-# String
-# card_number = "1234-5678-9099-3456"
-# for x in card_number:
-#     print(x)
-
-# Skip - continue
-# for x in range(1, 21):
-#     if x == 13:
-#         continue # 13일때 14로 바로 넘어간다
-#     else:
-#         print(x)
-
-# Exit - break
-for x in range(1, 21):
-    if x == 13:
-        break  # 13일때 탈출
-    else:
-        print(x)
+# minutes = int(x / 60) % 60 정수 변환을 한다.
+# minutes = (x // 60) % 60 에서 // 연산자는 소수점을 버린 정수 반환
