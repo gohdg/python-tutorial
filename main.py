@@ -1,22 +1,22 @@
-# conditional expression = ternary operator, 한줄 if-else 문
-# X if condition else Y
 
-from sys import maxunicode
+# name = input("Enter your full name: ")
+phone_number = input("Enter your phone number: ")
+
+# name = Bro Code
+# result = len(name) # 8
+# result = name.find("o") # 2
+# result = name.rfind("o") # 5
+# result = name.find("q") # 문자가 없으면 -1
+
+# name = name.capitalize() # bro code -> Bro code
+# name = name.upper() # bro code -> BRO CODE
+# name = name.lower() # BRO coDE -> bro code
+
+# result = name.isdigit() #Bro ->False, Bro123->False, 123->True
+# result = name.isalpha()  # 문자열일때만 True, 공백문자도 False
+
+# result = phone_number.count("-") # 문자열에서 해당문자 개수 리턴
+# result = phone_number.replace("-", " ")  # 문자열에서 해당문자를 특정문자로 변경
 
 
-num = 6
-a = 6
-b = 7
-age = 13
-temperature = 20
-user_role = "admin"
-
-# print("Positive" if num > 0 else "Negative")
-# result = "Even" if (num % 2 == 0) else "Odd"
-# max_num = a if a > b else b
-# min_num = a if a < b else b
-# status = "Adult" if age >=13 else "Child"
-# weather = "HOT" if temperature > 20 else "COLD"
-access_level = "Full Access" if user_role == "admin" else "Limited Access"
-
-print(access_level)
+print(help(str))
