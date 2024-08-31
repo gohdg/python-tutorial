@@ -1,24 +1,23 @@
-# Python calculator
+# logical operator = or, and, not
 
-operator = input("Enter an operator (+ - * /): ")
-num1 = float(input("Enter the 1st number: "))
-num2 = float(input("Enter the 2nd number: "))
+temp = 20
+is_sunny = False
 
-result = None
-
-if operator == "+":
-    result = num1 + num2
-elif operator == "-":
-    result = num1 - num2
-elif operator == "/":
-    if num2 != 0:
-        result = num1 / num2
-    else:
-        print("Error: Division by zero is not allowed")
-elif operator == "*":
-    result = num1 * num2
-else:
-    print(f"{operator} is not valid operator")
-
-if result is not None:
-    print(round(result, 3))
+if temp >= 28 and is_sunny:
+    print("It is HOT outside 🥵")
+    print("It is SUNNY 🌞")
+elif temp <= 0 and is_sunny:
+    print("It is COLD outside 🥶")
+    print("It is SUNNY 🌞")
+elif 28 > temp > 0 and is_sunny:
+    print("It is WARM outside 😊")
+    print("It is SUNNY 🌞")
+if temp >= 28 and not is_sunny:
+    print("It is HOT outside 🥵")
+    print("It is CLOUDY ⛅")
+elif temp <= 0 and not is_sunny:
+    print("It is COLD outside 🥶")
+    print("It is CLOUDY ⛅")
+elif 28 > temp > 0 and not is_sunny:
+    print("It is WARM outside 😊")
+    print("It is CLOUDY ⛅")
