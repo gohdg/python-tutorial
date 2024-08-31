@@ -1,72 +1,36 @@
-# format specifiers = f"{value:flags}"
+# while loop: 조건이 true일 동안 코드 실행
 
-# .(number)f = round to that many decimal places (fixed point)
-# :(number) = 공백 추가
-# :03 = allocate and zero pad that many spaces
-# :< = 왼쪽 정렬 default
-# :> = 오른쪽 정렬
-# :^ = 가운데 정렬
-# :+ = 양수 표시
-# : = 양수 앞에 공백추가
-# :, = 숫자에 comma 추가
+# name = input("Enter your name: ")
 
-price1 = 3.14659
-price2 = -987.65
-price3 = 12.34
+# while name == "":
+#     print("You did not enter your name")
+#     name = input("Enter your name: ")
 
-price4 = 12000.14659
-price5 = -9870.65
-price6 = 1200.34
+# print(f"Hello {name}")
 
-print(f"Price 1 is {price1:.2f}")  # 3.15
-print(f"Price 2 is {price2:.2f}")  # -987.65
-print(f"Price 3 is {price3:.2f}")  # 12.34
 
-print(f"Price 1 is ${price1:.1f}")  # $3.1
-print(f"Price 2 is ${price2:.1f}")  # $-987.6
-print(f"Price 3 is ${price3:.1f}")  # $12.3
+# age = int(input("Enter your age: "))
 
-# :(number) = 공백 추가, number는 자리수
-print(f"Price 1 is ${price1:10}")  # $   3.14659
-print(f"Price 2 is ${price2:10}")  # $   -987.65
-print(f"Price 3 is ${price3:10}")  # $     12.34
+# while age < 0:
+#     print("Age can't be negative")
+#     age = int(input("Enter your age: "))
 
-# :0(number) = 0으로 추가, number는 자리수
-print(f"Price 1 is ${price1:010}")  # $0003.14659
-print(f"Price 2 is ${price2:010}")  # $-000987.65
-print(f"Price 3 is ${price3:010}")  # $0000012.34
+# print(f"You are {age} years old")
 
-# :<(number) = 왼쪽정렬, number는 자리수
-print(f"Price 1 is ${price1:<10}")  # $3.14659
-print(f"Price 2 is ${price2:<10}")  # $-987.65
-print(f"Price 3 is ${price3:<10}")  # $12.34
 
-# :>(number) = 오른쪽정렬, number는 자리수
-print(f"Price 1 is ${price1:>10}")  # $   3.14659
-print(f"Price 2 is ${price2:>10}")  # $   -987.65
-print(f"Price 3 is ${price3:>10}")  # $     12.34
+# food = input("Enter a food you like ( q to quit):")
 
-# :^(number) = 가운데정렬, number는 자리수
-print(f"Price 1 is ${price1:^10}")  # $  3.14659
-print(f"Price 2 is ${price2:^10}")  # $ -987.65
-print(f"Price 3 is ${price3:^10}")  # $   12.34
+# # while not food == "q":
+# while food != "q":
+#     print(f"You like {food}")
+#     food = input("Enter another food you like ( q to quit):")
 
-# :+ = 양수 표시
-print(f"Price 1 is ${price1:+}")  # $+3.14659
-print(f"Price 2 is ${price2:+}")  # $-987.65
-print(f"Price 3 is ${price3:+}")  # $+12.34
+# print("bye")
 
-# : = 양수일경우 앞에 공백
-print(f"Price 1 is ${price1: }")  # $ 3.14659
-print(f"Price 2 is ${price2: }")  # $-987.65
-print(f"Price 3 is ${price3: }")  # $ 12.34
+num = int(input("Enter a # between 1 - 10: "))
 
-# :, = 1000단위 comma 표시
-print(f"Price 4 is ${price4:,}")  # $12,000.14659
-print(f"Price 5 is ${price5:,}")  # $-9,870.65
-print(f"Price 6 is ${price6:,}")  # $1,200.34
+while num < 1 or num > 10:
+    print(f"{num} is not valid")
+    num = int(input("Enter a # between 1 - 10: "))
 
-# :+,.2f = 양수기호 표시, 1000단위 comma 표시, 소수점 2자리까지
-print(f"Price 4 is ${price4:+,.2f}")  # $+12,000.15
-print(f"Price 5 is ${price5:+,.2f}")  # $-9,870.65
-print(f"Price 6 is ${price6:+,.2f}")  # $+1,200.34
+print(f"Your number is {num}")
