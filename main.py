@@ -1,40 +1,21 @@
+# indexing = accessing elements of a sequence using [] (aka indexing operator)
+#           [start : end(exclusive) : step]
 
-# name = input("Enter your full name: ")
-
-
-# phone_number = input("Enter your phone number: ")
-
-# name = Bro Code
-# result = len(name) # 8
-# result = name.find("o") # 2
-# result = name.rfind("o") # 5
-# result = name.find("q") # 문자가 없으면 -1
-
-# name = name.capitalize() # bro code -> Bro code
-# name = name.upper() # bro code -> BRO CODE
-# name = name.lower() # BRO coDE -> bro code
-
-# result = name.isdigit() #Bro ->False, Bro123->False, 123->True
-# result = name.isalpha()  # 문자열일때만 True, 공백문자도 False
-
-# result = phone_number.count("-") # 문자열에서 해당문자 개수 리턴
-# result = phone_number.replace("-", " ")  # 문자열에서 해당문자를 특정문자로 변경
+credit_number = "1234-5678-9012-3456"
+# index:         0123456789
+# index:                      -4-3-2-1
 
 
-# print(help(str))
+# print(credit_number[0])
 
-# Exercise: validate user input
-# 1. username is no more than 12 characters
-# 2. username must not contain spaces
-# 3. username must not contain digits
+# print(credit_number[0:4])  # 1234
+# print(credit_number[:4])  # 1234
+# print(credit_number[5:9])  # 5678
+# print(credit_number[5:])  # 5678-9012-3456
+# print(credit_number[::2])  # 13-6891-46
 
-username = input("Enter username: ")
+last_digits = credit_number[-4:]
+print(f"XXXX-XXXX-XXXX-{last_digits}")
 
-if len(username) > 12:
-    print("username is no more than 12 characters")
-elif not username.find(" ") == -1:
-    print("username must not contain spaces")
-elif not username.isalpha():
-    print("username must not contain digits")
-else:
-    print(f"Welcome {username}")
+backward_cc_number = credit_number[::-1]
+print(backward_cc_number)
