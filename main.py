@@ -1,17 +1,85 @@
-import time
+# collection = multiple values를 가지는 하나의 변수
+# List = [] ordered and changeable. Duplicates OK
+# Set = {} unordered and immutable, but Add/Remove OK. No duplicates
+# Tuple = () ordered and unchangeable. Duplicates OK. FASTER
 
-# my_time = int(input("Enter the time in seconds: "))
 
-my_time = 3671  # 예: 3671초는 1시간 1분 11초
+# *************************************************
+# List
+# *************************************************
+# fruits = ["apple", "orange", "banana", "coconut"]
 
-for x in range(my_time, 0, -1):
-    seconds = x % 60  # 초 단위는 60으로 나눈 나머지
-    minutes = (x // 60) % 60  # 분 단위는 초 단위를 제외한 나머지에서 60으로 나눈 나머지
-    hours = x // 3600  # 시간 단위는 전체 시간을 3600으로 나눈 몫
-    print(f"{hours:02}:{minutes:02}:{seconds:02}")
-    time.sleep(1)
+# print(dir(fruits)) # object의 속성과, 메서드를 알수 있다.
+# print(help(fruits)) # List object의 속성과 메서드의 설명을 확인할 수 있다.
+# print(len(fruits)) # List object의 크기를 알수 있다.
+# print("apple" in fruits) # True 리턴
 
-print("TIME'S UP")
+# List: changeable
+# fruits[0] = "pineapple"
+# print(fruits) # ['pineapple', 'orange', 'banana', 'coconut']
 
-# minutes = int(x / 60) % 60 정수 변환을 한다.
-# minutes = (x // 60) % 60 에서 // 연산자는 소수점을 버린 정수 반환
+# List: append 메소드, 제일 마지막에 요소 추가
+# fruits.append("pineapple")
+# print(fruits)
+
+# List: remove 메소드, 항목을 찾아서 없앤다.
+# fruits.remove("apple")
+# print(fruits) # ['orange', 'banana', 'coconut']
+
+# List: insert 메소드, 해당 위치에 항목을 삽입한다..
+# fruits.insert(0, "pineapple") # 위치:0, 항목:"pineapple"
+# print(fruits)  # ['pineapple', 'apple', 'orange', 'banana', 'coconut']
+
+# List: sort 메소드, 알파벳 순서로.
+# fruits.sort()
+# print(fruits)  # ['apple', 'banana', 'coconut', 'orange']
+
+# List: revers 메소드, list item 역순, 알파벳 순서와 관계 X.
+# fruits.reverse()
+# print(fruits)  # ['coconut', 'banana', 'orange', 'apple']
+
+# List: clear 메소드, list item 삭제.
+# fruits.clear()
+# print(fruits)  # []
+
+# List: index 메소드, 해당항목의 index 값 리턴.
+# print(fruits.index("apple")) # 0, 항목이 없으면 error
+
+
+# print(fruits[::-1]) # ['coconut', 'banana', 'orange', 'apple']
+# for fruit in fruits:
+#     print(fruit)
+
+
+# *************************************************
+# Set: 순서가 없다, 변경 불가, 추가/삭제는 OK, 중복 불가
+# *************************************************
+# fruits = {"apple", "orange", "banana", "coconut"}
+# print(fruits)  # {'apple', 'banana', 'orange', 'coconut'} 순서가 없다
+# print(len(fruits))
+# print("apple" in fruits)
+
+# fruits.add("pineapple")
+# fruits.remove("apple")
+# fruits.pop()
+# fruits.clear()
+
+# for fruit in fruits:
+#     print(fruit)
+
+# print(fruits)
+
+# *************************************************
+# Tuple: 순서가 있다, 변경 불가, 중복가능, List보다 빨라
+# *************************************************
+
+fruits = ("apple", "orange", "banana", "coconut", "coconut")
+
+# print(dir(fruits)) # object의 속성과, 메서드를 알수 있다.
+# print(help(fruits)) # Tuple object의 속성과 메서드의 설명을 확인할 수 있다.
+# print(len(fruits)) # Tuple object의 크기를 알수 있다.
+# print("apple" in fruits)  # True 리턴
+
+# print(fruits.index("orange"))
+# print(fruits.count("coconut"))
+# print(fruits[3])
