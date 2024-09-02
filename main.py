@@ -1,46 +1,35 @@
-# dictionary = a collection of {key:value} pairs
-#              ordered and changeable. No duplicates
+# Concession stand program 극장 매점
 
-capitals = {"USA": "Washington D.C",
-            "India": "New Delhi",
-            "China": "Beijing",
-            "Russia": "Moscow"
-            }
+menu = {"pizza": 3.00,
+        "nachos": 4.50,
+        "popcorn": 6.00,
+        "fries": 2.50,
+        "chips": 1.00,
+        "pretzel": 3.50,
+        "soda": 3.00,
+        "lemonade": 4.25
+        }
 
-# print(dir(capitals))
-# print(capitals.get("Japan")) # Key가 없으면 None 리턴, 있으면 value 리턴
+cart = []
+total = 0
 
-# if capitals.get("Russia"):
-#     print("That capital exists")
-# else:
-#     print("That capital doesn't exist")
+print("---------- MENU -----------")
+for key, value in menu.items():
+    print(f"{key:10}: ${value:.2f}")
+print("---------------------------")
 
-# capitals.update({"Germany": "Berlin"})  # key가 없으면 insert, 있으면 value 업데이트
-# capitals.update({"USA": "Detroit"})
+# 구매 아이템 등록
+while True:
+    food = input("Select an item (q to quit): ").lower()
+    if food == "q":
+        break
+    elif menu.get(food) is not None:
+        cart.append(food)
 
-# capitals.pop("China")
-# print(capitals)
-
-# (capitals.popitem())  # 마지막 아이템을 추출한다.
-# print(capitals)
-# print(len(capitals))
-
-# capitals.clear()
-# print(capitals)
-
-# print("Moscow" in capitals)
-
-# keys = capitals.keys()
-# print(keys) # dict_keys(['USA', 'India', 'China', 'Russia'])
-# for key in keys:
-#     print(key)
-
-# values = capitals.values()
-# print(values) # dict_values(['Washington D.C', 'New Delhi', 'Beijing', 'Moscow'])
-# for value in values:
-#     print(value)
-
-# items = capitals.items()
-# print(items) # dict_items([('USA', 'Washington D.C'), ('India', 'New Delhi'), ('China', 'Beijing'), ('Russia', 'Moscow')])
-# for key, value in items:
-#     print(f"{key}: {value}")
+# 금액 계산
+print("-------- YOUR ORDER ---------")
+for food in cart:
+    total += menu.get(food)
+    print(food, end=" ")
+print()
+print(f"Total is: ${total:.2f}")
