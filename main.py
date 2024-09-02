@@ -1,82 +1,139 @@
-# Python number guessing game
-import random
 
-# lowest_num = 1
-# highest_num = 100
-# is_running = True
-# guesses = 0
-
-# answer = random.randint(lowest_num, highest_num)
-
-# # print(answer)
-
-# print("Python Number Guessing Game")
-# print(f"Select a number between {lowest_num} and {highest_num} ")
-
-# while is_running:
-#     guess = input("Enter your guess: ")
-
-#     if guess.isdigit():
-#         guess = int(guess)
-#         guesses += 1
-
-#         if guess < lowest_num or guess > highest_num:
-#             print("That number is out of range")
-#             print(f"Please select a number between {
-#                   lowest_num} and {highest_num}")
-#         elif guess < answer:
-#             print("Too low! Try again!")
-#         elif guess > answer:
-#             print("Too high! Try again!")
-#         else:
-#             print(f"CORRECT! The answer was {answer}")
-#             print(f"Number of guesses: {guesses}")
-#             is_running = False
-
-#     else:
-#         print("Invalid guess")
-#         print(f"Please select a number between {lowest_num} and {highest_num}")
-
-# while True:
-#     guess_num = int(input("Enther the number you guess: ").replace(" ", ""))
-#     if guess_num == answer:
-#         break
-#     elif answer > guess_num:
-#         print(f"Greater than {guess_num}")
-#     else:
-#         print(f"Less than {guess_num}")
-
-# print(f"Correct! you hit the answer {answer}")
+# *******************************************************************************
+# ** function = A block of reusuable code
+# ** 실행방법: 함수명에 ()를 사용
+# ** 함수선언: def 함수명():
+# *******************************************************************************
 
 
-# Python rock, scissors, paper game
+# def happy_birthday(name, age):
+#     print(f"Happy birthday to {name}!")
+#     print(f"You are {age} years old!")
+#     print("Happy birthday to you!")
+#     print()
 
-options = ("rock", "scissors", "paper")
+# happy_birthday("Bro", 20)
+# happy_birthday("Steve", 30)
+# happy_birthday("Joe", 40)
 
-playing = True
+# def display_invoice(username, amount, due_date):
+#     print(f"Hello {username}")
+#     print(f"Your bill of ${amount:.2f} is due: {due_date}")
 
-while playing:
-    player = None
-    computer = random.choice(options)
 
-    while player not in options:
-        player = input("Enter a choice (rock, scissors, paper): ")
+# display_invoice("BroCode", 42.50, "01/01")
+# display_invoice("JoeSchmo", 142.50, "01/02")
 
-    print(f"Player: {player}")
-    print(f"Computer: {computer}")
+# *******************************************************************************
+# ** return = statement used to end a function
+# **          and send a result back to the caller
+# *******************************************************************************
 
-    if player == computer:
-        print("It's a tie!")
-    elif player == "rock" and computer == "scissors":
-        print("You win!")
-    elif player == "paper" and computer == "rock":
-        print("You win!")
-    elif player == "scissors" and computer == "paper":
-        print("You win!")
+# def create_name(first, last):
+#     first = first.capitalize()
+#     last = last.capitalize()
+#     return first + " " + last
+
+
+# full_name = create_name("bro", "code")
+# print(full_name)
+
+# *******************************************************************************
+# ** default arguments = A default value for certain parameters
+# **                     해당인자를 전달하지 않았을 때 사용
+# **                     make your functions more flexible, reduces # of arguments
+# **                     1. positional, 2.DEFAULT, 3. keyword, 4. arbitrary
+# *******************************************************************************
+
+# def net_price(list_price, discount=0, tax=0.05):
+#     return list_price * (1 - discount) * (1 + tax)
+
+
+# # print(net_price(500, 0, 0.05))
+# # print(net_price(500))
+# # print(net_price(500, 0.1))
+# print(net_price(500, 0.1, 0))
+
+# *******************************************************************************
+# ** keyword arguments = an argument preceded by an identifier
+# **                     helps with readability
+# **                     argument의 순서는 문제가 되지 않는다
+# **                     1. positional, 2.default, 3. KEYWORD, 4. arbitrary
+# *******************************************************************************
+
+# def hello(greeting, title, first, last):
+#     print(f"{greeting} {title}{first} {last}")
+
+
+# # positional arguments way
+# hello("Hello", "Mr.", "Spongebob", "Squarepants")
+# # keyword arguments way
+# hello("Hello", first="Spongebob", last="Squarepants", title="Mr.")
+
+# def get_phone(country, area, first, last):
+#     return f"{country}-{area}-{first}-{last}"
+
+
+# phone_num = get_phone(country="82", area="10", first="7702", last="0809")
+# print(phone_num)
+
+
+# *******************************************************************************
+# ** *args    = allow you to pass multiple non-key arguments
+# ** **kwargs = allow you to pass multiple keyword arguments                      helps with readability
+# **            * unpacking operator
+# **            1. positional, 2.default, 3. keyword, 4. ARBITRARY
+# *******************************************************************************
+
+# def add(*args):
+#     total = 0
+#     for arg in args:
+#         total += arg
+#     return total
+
+
+# print(add(1, 2, 3, 4, 5))
+
+# def display_name(*args):
+#     for arg in args:
+#         print(arg, end=" ")
+
+
+# display_name("Dr.", "Spongebob", "Harold", "Squarepants", "III")
+
+
+# def print_address(**kwargs):
+#     for key, value in kwargs.items():
+#         print(f"{key}: {value}")
+
+
+# print_address(street="112 Fake St.",
+#               city="Detroit",
+#               state="MI",
+#               zip="54321")
+
+def shipping_label(*args, **kwargs):
+    for arg in args:
+        print(arg, end=" ")
+    print()
+    # for value in kwargs.values():
+    #     print(value, end=" ")
+
+    if "apt" in kwargs:
+        print(f"{kwargs.get('street')} {kwargs.get('apt')}")
+    elif "pobox" in kwargs:
+        print(f"{kwargs.get('street')}")
+        print(f"{kwargs.get('pobox')}")
     else:
-        print("You lose!")
+        print(f"{kwargs.get('street')}")
 
-    if not input("Play again? (y/n) ").lower() == "y":
-        playing = False
+    print(f"{kwargs.get('city')} {kwargs.get('state')}, {kwargs.get('zip')}")
 
-print("Thanks for playing!")
+
+shipping_label("Dr.", "Spongebob", "Squarepants", "III",
+               street="123 Fake St.",
+               pobox="PO box #1001",
+               city="Detroit",
+               state="MI",
+               zip="54321"
+               )
