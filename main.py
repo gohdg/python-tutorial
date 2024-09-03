@@ -1,37 +1,81 @@
-# List comprehension: A concise way to create lists in Python
-#                     Compact and easier to read than traditional loops
-#                     [expression for value in iterable if condition]
+# Match-case statement
 
-# traditional way
-doubles = []
-for x in range(1, 11):
-    doubles.append(x * 2)
+# def day_of_week(day):
+#     if day == 1:
+#         return "It is Sunday"
+#     elif day == 2:
+#         return "It is Monday"
+#     elif day == 3:
+#         return "It is Tuesday"
+#     elif day == 4:
+#         return "It is Wednesday"
+#     elif day == 5:
+#         return "It is Thursday"
+#     elif day == 6:
+#         return "It is Friday"
+#     elif day == 7:
+#         return "It is Saturday"
+#     else:
+#         return "Not a valid day"
 
-print(doubles)
 
-# concise way
-# doubles = [expression for value in iterable if condition]
-doubles = [x * 2 for x in range(1, 11)]
-print(doubles)
+# print(day_of_week(1))
 
-fruits = ["apple", "orange", "banana", "coconut"]
-# ['APPLE', 'ORANGE', 'BANANA', 'COCONUT']
-upper_fruits = [fruit.upper() for fruit in fruits]
-fruit_chars = [fruit[0] for fruit in fruits]  # ['a', 'o', 'b', 'c']
 
-print(upper_fruits)
-print(fruit_chars)
+# def day_of_week2(day):
+#     match day:
+#         case 1:
+#             return "It is Sunday"
+#         case 2:
+#             return "It is Monday"
+#         case 3:
+#             return "It is Tuesday"
+#         case 4:
+#             return "It is Wednesday"
+#         case 5:
+#             return "It is Thursday"
+#         case 6:
+#             return "It is Friday"
+#         case 7:
+#             return "It is Saturday"
+#         case _:
+#             return "Not a valida day"
 
-numbers = [1, -2, 3, -4, 5, -6, 8, -7]
-positive_nums = [num for num in numbers if num >= 0]
-negative_nums = [num for num in numbers if num < 0]
-even_nums = [num for num in numbers if num % 2 == 0]
-odd_nums = [num for num in numbers if num % 2 == 1]
-print(positive_nums)  # [1, 3, 5]
-print(negative_nums)  # [-2, -4, -6, -7]
-print(even_nums)  # [-2, -4, -6, 8]
-print(odd_nums)  # [1, 3, 5, -7]
 
-grades = [85, 42, 79, 90, 56, 61, 30]
-passing_grades = [grade for grade in grades if grade >= 60]
-print(passing_grades)  # [85, 79, 90, 61]
+# print(day_of_week2(1))
+
+
+# def is_weekend(day):
+#     match day:
+#         case "Sunday":
+#             return True
+#         case "Monday":
+#             return False
+#         case "Tuesday":
+#             return False
+#         case "Wednesday":
+#             return False
+#         case "Thursday":
+#             return False
+#         case "Friday":
+#             return False
+#         case "Saturday":
+#             return True
+#         case _:
+#             return False
+
+
+# print(is_weekend("Friday"))
+
+
+def is_weekend2(day):
+    match day:
+        case "Saturday" | "Sunday":
+            return True
+        case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+            return False
+        case _:
+            return False
+
+
+print(is_weekend2("Saturday"))
