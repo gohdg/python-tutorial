@@ -1,43 +1,50 @@
-# Iterables = An object/collection that can return its elements one at a time,
-#             allowing it to be iterated over in a loop
-# 반복 가능한 객체를 말한다.List, Tuple, Set, string, Dictionary
+# Membership operators = used to test whether a value or variables is found in a sequence
+#                        (string, list, tuple, set, or dictionary)
+#                        1. in
+#                        2. not in
 
-# ** List
-# numbers = [1, 2, 3, 4, 5]
+# word = "APPLE"
 
-# for number in numbers:
-#     print(number, end=" ")
+# letter = input("Guess a letter in the secret word: ")
 
-# print()
-# # 역순
-# for number in reversed(numbers):
-#     print(number, end="-")
+# if letter in word:
+#     print(f"There is a {letter}")
+# else:
+#     print(f"{letter} was not found")
 
-# ** Set
-# fruits = {"apple", "orange", "banana", "coconut"}
+# if letter not in word:
+#     print(f"{letter} was not found")
+# else:
+#     print(f"There is a {letter}")
 
-# for fruit in fruits:
-#     print(fruit)
 
-# ** Set은 순서가 없다. 따라서 reversed 사용 X
-# for fruit in reversed(fruits):
-#     print(fruit)
+# students = {"Spongebob", "Patrick", "Sandy"}
 
-# ** String
-# name = "Bro Code"
+# student = input("Enter the name of student: ")
 
-# for character in name:
-#     print(character, end=" ")
+# if student in students:
+#     print(f"{student} is a student")
+# else:
+#     print(f"{student} was not found")
 
-# ** Dictionary
-my_dictionary = {"A": 1, "B": 2, "C": 3}
 
-# default로 key를 리턴한다
-for key in my_dictionary:
-    print(key)
+# grades = {"Sandy": "A",
+#           "Squidward": "B",
+#           "Spongebob": "C",
+#           "Patrick": "D"
+#           }
 
-for value in my_dictionary.values():
-    print(value)
+# student = input("Enter the name of a student: ")
 
-for key, value in my_dictionary.items():
-    print(f"{key} = {value}")
+# if student in grades:
+#     # print(f"{student}'s grade is {grades.get(student)}")
+#     print(f"{student}'s grade is {grades[student]}")
+# else:
+#     print(f"{student} was not found: {grades.get(student, "F")}")
+
+email = "BroCode@gmail.com"
+
+if "@" in email and "." in email:
+    print("Valid email")
+else:
+    print("Invalid email")
