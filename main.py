@@ -1,76 +1,84 @@
-# Python Banking Program
-
-def show_balance(balance):
-    print("**************************")
-    print(f"Your balance is ${balance:.2f}")
-    print("**************************")
+# Python Slot Machine
+import random
 
 
-def deposit():
-    print("**************************")
-    amount = float(input("Enter an amount to be deposited: "))
-    print("**************************")
-
-    if amount < 0:
-        print("**************************")
-        print("That's not a valid amount")
-        print("**************************")
-        return 0
-    else:
-        return amount
+def spin_row():
+    symbols = ["🍒", "🍉", "🍋", "🔔", "⭐️"]
+    return [random.choice(symbols) for _ in range(3)]
 
 
-def withdraw(balance):
-    print("**************************")
-    amount = float(input("Enter amount to be withdrawn: "))
-    print("**************************")
+def print_row(row):
+    print("*************")
+    print(" | ".join(row))
+    print("*************")
 
-    if amount > balance:
-        print("**************************")
-        print("Insufficient funds")
-        print("**************************")
-        return 0
-    elif amount < 0:
-        print("**************************")
-        print("Amount must be greater than 0")
-        print("**************************")
-        return 0
-    else:
-        return amount
+
+def get_payout(row, bet):
+    if row[0] == row[1] == row[2]:
+        if row[0] == "🍒":
+            return bet * 3
+        elif row[0] == "🍉":
+            return bet * 4
+        elif row[0] == "🍋":
+            return bet * 5
+        elif row[0] == "🔔":
+            return bet * 10
+        elif row[0] == "⭐️":
+            return bet * 20
+    return 0
 
 
 def main():
-    balance = 0
-    is_running = True
+    balance = 100
 
-    while is_running:
-        print("**************************")
-        print("     Banking Program     ")
-        print("**************************")
-        print("1.Show Balance")
-        print("2.Deposit")
-        print("3.Withdraw")
-        print("4.Exit")
-        print("**************************")
+    print("************************")
+    print("Welcome to Python Slots  ")
+    print("************************")
+    print("Symbols: 🍒 🍉 🍋 🔔 ⭐️ ")
+    print("************************")
 
-        choice = input("Enter your choice (1-4): ")
+    while balance > 0:
+        print(f"Current balance: ${balance}")
 
-        match choice:
-            case "1":
-                show_balance(balance)
-            case "2":
-                balance += deposit()
-            case "3":
-                balance -= withdraw(balance)
-            case "4":
-                is_running = False
-            case _:
-                print("**************************")
-                print("That is not a valid choice")
-                print("**************************")
+        bet = input("Place your bet amount: ")
 
-    print("**************************")
-    print("Thank you! Have a nice day")
+        if not bet.isdigit():
+            print("Please enter a valid number")
+            continue
+
+        bet = int(bet)
+
+        if bet > balance:
+            print("Insufficient funds")
+            continue
+
+        if bet <= 0:
+            print("Bet must be greater than 0")
+            continue
+
+        balance -= bet
+
+        row = spin_row()
+        print("Spinning...\n")
+        print_row(row)
+
+        payout = get_payout(row, bet)
+
+        if payout > 0:
+            print(f"You won ${payout}")
+        else:
+            print("Sorry you lost this round")
+
+        balance += payout
+
+        play_again = input("Do you want to spin again? (y/n): ").lower()
+
+        if not play_again == "y":
+            break
+
+    print("*******************************************")
+    print(f"Game over! Your final balance is {balance}")
+    print("*******************************************")
 
 
 if __name__ == "__main__":
