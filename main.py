@@ -1,18 +1,6 @@
-# module = a file containing code you want to include in your program
-#          use 'import' to include a module (built-in or your own)
-#          useful to break up a large program reusuable separate files
-
-
-# 모듈 사용법
-# import math
-# import math as m # m is alias
-# from math import pi # not recommend
-
-import example
-
-# result = example.pi
-# result = example.square(3)
-# result = example.cube(3)
-result = example.circumference(3)
-result = example.area(3)
-print(result)
+# variable scope
+# scope resolution = (LEGB) Local -> Enclosed -> Global -> Built-in
+# 함수내 변수 (local) 1 순위
+# 함수내 함수에서 local 변수가 없으면 해당 함수를 포함하는 함수로 올라가서 변수를 찾는다. (Enclosed) - 2 순위
+# 함수에 local이 없고 enclosed가 아니면 전역(Global)에서 변수를 찾는다. 3순위
+# 전역 변수도 없으면 import 된 모듈에서 찾는다. Built-in
