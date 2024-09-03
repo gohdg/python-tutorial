@@ -1,6 +1,77 @@
-# variable scope
-# scope resolution = (LEGB) Local -> Enclosed -> Global -> Built-in
-# 함수내 변수 (local) 1 순위
-# 함수내 함수에서 local 변수가 없으면 해당 함수를 포함하는 함수로 올라가서 변수를 찾는다. (Enclosed) - 2 순위
-# 함수에 local이 없고 enclosed가 아니면 전역(Global)에서 변수를 찾는다. 3순위
-# 전역 변수도 없으면 import 된 모듈에서 찾는다. Built-in
+# Python Banking Program
+
+def show_balance(balance):
+    print("**************************")
+    print(f"Your balance is ${balance:.2f}")
+    print("**************************")
+
+
+def deposit():
+    print("**************************")
+    amount = float(input("Enter an amount to be deposited: "))
+    print("**************************")
+
+    if amount < 0:
+        print("**************************")
+        print("That's not a valid amount")
+        print("**************************")
+        return 0
+    else:
+        return amount
+
+
+def withdraw(balance):
+    print("**************************")
+    amount = float(input("Enter amount to be withdrawn: "))
+    print("**************************")
+
+    if amount > balance:
+        print("**************************")
+        print("Insufficient funds")
+        print("**************************")
+        return 0
+    elif amount < 0:
+        print("**************************")
+        print("Amount must be greater than 0")
+        print("**************************")
+        return 0
+    else:
+        return amount
+
+
+def main():
+    balance = 0
+    is_running = True
+
+    while is_running:
+        print("**************************")
+        print("     Banking Program     ")
+        print("**************************")
+        print("1.Show Balance")
+        print("2.Deposit")
+        print("3.Withdraw")
+        print("4.Exit")
+        print("**************************")
+
+        choice = input("Enter your choice (1-4): ")
+
+        match choice:
+            case "1":
+                show_balance(balance)
+            case "2":
+                balance += deposit()
+            case "3":
+                balance -= withdraw(balance)
+            case "4":
+                is_running = False
+            case _:
+                print("**************************")
+                print("That is not a valid choice")
+                print("**************************")
+
+    print("**************************")
+    print("Thank you! Have a nice day")
+
+
+if __name__ == "__main__":
+    main()
