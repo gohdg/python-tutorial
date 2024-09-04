@@ -1,32 +1,34 @@
-# "Duck typing" = Another way to achieve polymorphism besides Inheritance
-#                 Object must have the minimum necessary attributes/methods
-#                 "If it looks like a duck and quacks like a duck, it must be a duck"
+# Static methods = A method that belong to a class rather than any object from that class (instance)
+#                  Usually used for general utility functions
 
-# 상속을 통한 polymorphism과 달리, 상속을 받지 않은 클래스에서 동일한 이름의 속성/메서드가 있으면 polymorphism을 구현할 수 있는 방법
+# Instance methods = Best for operations on instance of the class (objects)
+# Static methods = Best for utility functions that do not need access to class data
 
-class Animal:
-    alive = True
+class Employee:
 
+    def __init__(self, name, position) -> None:
+        self.name = name
+        self.position = position
 
-class Dog(Animal):
-    def speak(self):
-        print("WOOF!")
+    # instance method
+    def get_info(self):
+        return f"{self.name} = {self.position}"
 
-
-class Cat(Animal):
-    def speak(self):
-        print("MEOW!")
-
-
-class Car:  # 상속 받지 않는다.
-    alive = False
-
-    def speak(self):
-        print("HONK!")
+    # static method
+    @staticmethod
+    def is_valid_position(position):  # no need self keyword
+        valid_positions = ["Manager", "Cashier", "Cook", "Janitor"]
+        return position in valid_positions
 
 
-animals = [Dog(), Cat(), Car()]  # polimorphism 구현
+employee1 = Employee("Eugune", "Manager")
+employee2 = Employee("Squidward", "Cashier")
+employee3 = Employee("Spongebob", "Cook")
 
-for animal in animals:
-    animal.speak()
-    print(animal.alive)
+print(employee1.get_info())
+print(employee2.get_info())
+print(employee3.get_info())
+
+# class와 instance에서 모두 접근 가능
+print(Employee.is_valid_position("Rocket Scientist"))
+print(employee1.is_valid_position(employee1.position))
