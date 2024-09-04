@@ -1,50 +1,68 @@
-# multiple inheritance = inherit from more than one parent class
-#                        C(A,B)
-# multilevel inheritance = inherit from a parent which inherits from another parent
-#                          C(B) <- B(A) <- A
+# super() = Function used in a child class to call methods from a parent class (super class).
+#           Allows you to extend the functionality of the inherited methods
 
-class Animal:
-
-    def __init__(self, name) -> None:
-        self.name = name
-
-    def eat(self):
-        print(f"{self.name} is eating")
-
-    def sleep(self):
-        print(f"{self.name} is sleeping")
+from turtle import circle, width
 
 
-class Prey(Animal):
-    def flee(self):
-        print(f"{self.name} is fleeing")
+class Shape:
+    def __init__(self, color, is_filled) -> None:
+        self.color = color
+        self.is_filled = is_filled
+
+    def describe(self):
+        print(f"It is {self.color} and {
+              'filled' if self.is_filled else 'not filled'}")
 
 
-class Predator(Animal):
-    def hunt(self):
-        print(f"{self.name} is hunting")
+class Circle(Shape):
+    def __init__(self, color, is_filled, radius) -> None:
+        super().__init__(color, is_filled)
+        self.radius = radius
+    # override
+
+    def describe(self):
+        super().describe()  # extend functionality
+        print(f"It is a circle with an area of {
+              3.14 * self.radius * self.radius}")
 
 
-class Rabbit(Prey):
-    pass
+class Square(Shape):
+    def __init__(self, color, is_filled, width) -> None:
+        super().__init__(color, is_filled)
+        # self.color = color
+        # self.filled =filled
+        self.width = width
+
+    def describe(self):
+        super().describe()  # extend functionality
+        print(f"It is a square with an area of {
+              self.width * self.width}")
 
 
-class Hawk(Predator):
-    pass
+class Triangle(Shape):
+    def __init__(self, color, is_filled, width, height) -> None:
+        super().__init__(color, is_filled)
+        # self.color = color
+        # self.filled =filled
+        self.width = width
+        self.height = height
+
+    def describe(self):
+        super().describe()  # extend functionality
+        print(f"It is a triangle with an area of {
+              self.width * self.height / 2}")
 
 
-class Fish(Prey, Predator):
-    pass
+circle = Circle("red", True, 5)
+print(circle.color)
 
+square = Square(color="blue", is_filled=False, width=6)
+print(square.color)
 
-rabbit = Rabbit("Bugs")
-hawk = Hawk("Tony")
-fish = Fish("Nemo")
+triangle = Triangle(color="yellow", is_filled=True, width=7, height=8)
+print(triangle.width)
+print(triangle.height)
 
-rabbit.flee()
-hawk.hunt()
-fish.flee()
-fish.hunt()
-
-rabbit.eat()
-rabbit.sleep()
+circle.describe()
+square.describe()
+triangle.describe()
