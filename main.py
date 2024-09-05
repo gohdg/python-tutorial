@@ -1,41 +1,23 @@
-# Class methods = Allow operationis related to the class itself
-#                 Take (cls) as the first parameter, which represents the class itself.
-# cls means class
-
-# instance methods = Best for operations on instance of the class (objects)
-# Static methods = Best for utility functions that do not need access to class data
-# Class methods = Best for class-level data or require access to the class itself
-
-class Student:
-    count = 0
-    total_gpa = 0
-
-    def __init__(self, name, gpa) -> None:
-        self.name = name
-        self.gpa = gpa
-        Student.count += 1
-        Student.total_gpa += gpa
-
-    # INSTANCE METHOD
-    def get_info(self):
-        return f"{self.name} {self.gpa}"
-
-    @classmethod
-    def get_count(cls):
-        return f"Total # of students: {cls.count}"
-
-    @classmethod
-    def get_average_gpa(cls):
-        if cls.count == 0:
-            return 0
-        else:
-            return f"Average gpa: {cls.total_gpa / cls.count:.2f}"
+# Magic methods = Dunder methods (double underscore methods)
+#                 __init__, __str__, __eq__
+#                 They are automatically called by many of Python's built-in operations.
+#                 They allow developers to define or customzie the behavior of objects
 
 
-student1 = Student("Spongebob", 3.2)
-student2 = Student("Patrick", 2.0)
-student3 = Student("Sandy", 4.0)
+class Book:
+
+    def __init__(self, title, author, num_pages) -> None:
+        self.title = title
+        self.author = author
+        self.num_pages = num_pages
+
+    # print(book1) 하면 보통 메모리 주소를 출력하는데, 아래 __str__를 정의하면 메모리주소 대신의 정의한 대로 출력된다.
+    def __str__(self):
+        return f"'{self.title}' by {self.author} "
 
 
-print(Student.get_count())
-print(Student.get_average_gpa())
+book1 = Book("The Hobbit", "J.R.R. Tolkien", 310)
+book2 = Book("Harry Potter and The Philosopher's Stone", "J.K. Rowlling", 223)
+book3 = Book("The Lion, the Witch and the Wardrobe", "C.S. Lewis", 172)
+
+print(book1)
