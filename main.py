@@ -1,34 +1,41 @@
-# Static methods = A method that belong to a class rather than any object from that class (instance)
-#                  Usually used for general utility functions
+# Class methods = Allow operationis related to the class itself
+#                 Take (cls) as the first parameter, which represents the class itself.
+# cls means class
 
-# Instance methods = Best for operations on instance of the class (objects)
+# instance methods = Best for operations on instance of the class (objects)
 # Static methods = Best for utility functions that do not need access to class data
+# Class methods = Best for class-level data or require access to the class itself
 
-class Employee:
+class Student:
+    count = 0
+    total_gpa = 0
 
-    def __init__(self, name, position) -> None:
+    def __init__(self, name, gpa) -> None:
         self.name = name
-        self.position = position
+        self.gpa = gpa
+        Student.count += 1
+        Student.total_gpa += gpa
 
-    # instance method
+    # INSTANCE METHOD
     def get_info(self):
-        return f"{self.name} = {self.position}"
+        return f"{self.name} {self.gpa}"
 
-    # static method
-    @staticmethod
-    def is_valid_position(position):  # no need self keyword
-        valid_positions = ["Manager", "Cashier", "Cook", "Janitor"]
-        return position in valid_positions
+    @classmethod
+    def get_count(cls):
+        return f"Total # of students: {cls.count}"
+
+    @classmethod
+    def get_average_gpa(cls):
+        if cls.count == 0:
+            return 0
+        else:
+            return f"Average gpa: {cls.total_gpa / cls.count:.2f}"
 
 
-employee1 = Employee("Eugune", "Manager")
-employee2 = Employee("Squidward", "Cashier")
-employee3 = Employee("Spongebob", "Cook")
+student1 = Student("Spongebob", 3.2)
+student2 = Student("Patrick", 2.0)
+student3 = Student("Sandy", 4.0)
 
-print(employee1.get_info())
-print(employee2.get_info())
-print(employee3.get_info())
 
-# class와 instance에서 모두 접근 가능
-print(Employee.is_valid_position("Rocket Scientist"))
-print(employee1.is_valid_position(employee1.position))
+print(Student.get_count())
+print(Student.get_average_gpa())
