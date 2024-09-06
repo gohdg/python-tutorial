@@ -1,66 +1,25 @@
-# Python reading files (.txt, .json, .csv)
 
-import os
-import json
-import csv
+import datetime
 
-home_dir = os.path.expanduser("~")
+date = datetime.date(2025, 1, 2)
+today = datetime.date.today()
 
-#  ************************************
-#  * read txt file
-#  * mode="r"
-#  ************************************
+time = datetime.time(12, 30, 0)
+now = datetime.datetime.now()
 
-# file_path = os.path.join(home_dir, "Desktop", "output.txt")
+now = now.strftime("%H:%M:%S %m-%d-%Y")
 
-# try:
-#     with open(file=file_path, mode="r") as file:
-#         content = file.read()
-#         print(content)
-# except FileNotFoundError:
-#     print("That file was not found")
-# except PermissionError:
-#     print("You do not have permission to read that file")
-# except Exception as ex:
-#     print(f"Error occurred during reading a file: {ex}")
+# print(type(date))
+print(date)
+print(today)
 
-# ************************************
-# * read json file
-# * mode="r"
-# * import json
-# * json.load(file): return object
-# ************************************
-# file_path = os.path.join(home_dir, "Desktop", "input.json")
-# try:
-#     with open(file=file_path, mode="r") as file:
-#         content = json.load(file)
-#         print(content)
-#         print(content["name"])
-# except FileNotFoundError:
-#     print("That file was not found")
-# except PermissionError:
-#     print("You do not have permission to read that file")
-# except Exception as ex:
-#     print(f"Error occurred during reading a file: {ex}")
+print(time)
+print(now)
 
-# ************************************
-# * read csv file
-# * mode="r"
-# * import csv
-# * csv.reader(file): return list collection,한줄 한줄 리스트
-# * csv 파일은 row 에 list가 있다고 생각하면 된다.
-# * 각 list의 item은 column 이 된다.
-# ************************************
-file_path = os.path.join(home_dir, "Desktop", "input.csv")
-try:
-    with open(file=file_path, mode="r") as file:
-        content = csv.reader(file)
-        for line in content:
-            print(line)  # row를 출력
-            print(line[0])  # 각 row의 0번째 column을 출력
-except FileNotFoundError:
-    print("That file was not found")
-except PermissionError:
-    print("You do not have permission to read that file")
-except Exception as ex:
-    print(f"Error occurred during reading a file: {ex}")
+target_datetime = datetime.datetime(2026, 1, 2, 12, 30, 1)
+current_datetime = datetime.datetime.now()
+
+if target_datetime < current_datetime:
+    print("Target date has passed")
+else:
+    print("Target date has NOT passed")
